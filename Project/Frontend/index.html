@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aravind DevOps Courses 🚀</title>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.faq-item p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.4s;
+  padding: 0 0;
+}
+.faq-item.active p {
+  max-height: 200px;
+  padding: 10px 0 10px 0;
+}
+.faq-item h4 {
+  cursor: pointer;
+  position: relative;
+}
+.faq-item h4::after {
+  content: '\25BC';
+  font-size: 0.8em;
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+.faq-item.active h4::after {
+  transform: rotate(180deg);
+}
+/* RESET */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* BODY */
+body {
+  background: #ffffff; /* full white background */
+  color: #333333;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* HEADER */
+header {
+  width:100%;
+  padding:20px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#f8f9fa;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+header h1 {
+  font-size:28px;
+  color:#dc3545; /* red title */
+  font-weight:700;
+}
+
+.login-btn {
+  background:#dc3545; /* red login button */
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+
+.login-btn:hover {
+  background:#b02a37;
+  transform:scale(1.05);
+}
+
+/* MAIN CONTENT */
+main {
+  width:90%;
+  max-width:1200px;
+  margin-top:50px;
+  display:flex;
+  flex-direction:column;
+  gap:60px;
+}
+
+/* SECTION HEADINGS */
+section h2 {
+  font-size:32px;
+  margin-bottom:30px;
+  color:#007bff; /* uniform dark blue color for all section headings */
+  text-align:center;
+  position:relative;
+}
+
+section h2::after {
+  content:'';
+  display:block;
+  width:60px;
+  height:4px;
+  background:#007bff; /* same underline color */
+  margin:10px auto 0;
+  border-radius:2px;
+}
+
+/* SERVICES */
+#services {
+  padding:40px 20px;
+}
+
+.services-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+}
+
+.service-card {
+  background:#f1f3f5;
+  padding:30px 20px;
+  border-radius:15px;
+  width:260px;
+  text-align:center;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.4s;
+  color:#333;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.service-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 20px 35px rgba(0,0,0,0.15);
+  background:#007bff;
+  color:#fff;
+}
+
+/* COURSES */
+#courses {
+  padding:40px 20px;
+}
+
+.courses-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  justify-content:center;
+}
+
+.course-card {
+  background:#f8f9fa;
+  color:#333;
+  width:280px;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 12px 25px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+
+.course-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 18px 35px rgba(0,0,0,0.15);
+}
+
+.course-card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.course-card .content {
+  padding:20px;
+}
+
+.course-card h3 {
+  font-size:20px;
+  margin-bottom:10px;
+  font-weight:700;
+}
+
+.course-card p {
+  font-size:14px;
+  margin-bottom:5px;
+  color:#555;
+}
+
+.course-card button {
+  width:100%;
+  padding:12px;
+  background:#007bff;
+  color:white;
+  border:none;
+  border-radius:10px;
+  margin-top:12px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.course-card button:hover {
+  background:#0056b3;
+  transform:scale(1.05);
+}
+
+/* REVIEWS */
+#reviews {
+  padding:40px 20px;
+}
+
+.review-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+
+.review-card {
+  background:#f1f3f5;
+  padding:25px;
+  border-radius:15px;
+  width:260px;
+  text-align:center;
+  color:#333;
+  font-weight:500;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.review-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 18px 30px rgba(0,0,0,0.15);
+}
+
+/* CONTACT */
+#contact {
+  padding:40px 20px;
+}
+
+.contact-form {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:600px;
+  margin:0 auto;
+  background:#001f3f; /* full dark blue background */
+  padding:35px;
+  border-radius:15px;
+  box-shadow:0 12px 25px rgba(0,0,0,0.1);
+  color:#fff;
+}
+
+.contact-form input, .contact-form textarea, .contact-form button {
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  background:#ffffff;
+  color:#333;
+  transition:0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color:#007bff;
+  outline:none;
+}
+
+.contact-form button {
+  background:#dc3545; /* red button for send message */
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.contact-form button:hover {
+  background:#b02a37;
+  transform:scale(1.05);
+}
+
+/* LOGIN MODAL */
+.modal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  justify-content:center;
+  align-items:center;
+  z-index:200;
+}
+
+.modal-content {
+  background:#f8f9fa;
+  color:#333;
+  padding:40px;
+  border-radius:15px;
+  width:400px;
+  max-width:90%;
+  position:relative;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  text-align:center;
+  margin-bottom:25px;
+  color:#dc3545;
+}
+
+.modal-content input, .modal-content select, .modal-content button {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+  background:#fff;
+  color:#333;
+  transition:0.3s;
+}
+
+.modal-content button {
+  background:#dc3545;
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.modal-content button:hover {
+  background:#b02a37;
+  transform:scale(1.05);
+}
+
+.close-btn {
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:22px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .services-list, .courses-container, .review-list {
+    flex-direction:column;
+    align-items:center;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h1>Aravind DevOps Courses <span style="font-size:1.2em;">🚀</span></h1>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#courses">Courses</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <button id="cartBtn" class="login-btn" onclick="openCart()">🛒 Cart (0)</button>
+    <button class="login-btn" onclick="openModal()">Login / Register</button>
+    <button class="login-btn" onclick="openAdminModal()" style="background:#343a40;">Admin</button>
+  </nav>
+</header>
+
+
+<main>
+  <section id="services">
+    <h2>What We Provide</h2>
+    <div class="services-list">
+      <div class="service-card">Hands-on DevOps Projects</div>
+      <div class="service-card">AWS & Cloud Automation</div>
+      <div class="service-card">Docker & Kubernetes Training</div>
+      <div class="service-card">Job Assistance & Resume Prep</div>
+      <div class="service-card">CI/CD Pipeline Mastery</div>
+      <div class="service-card">Interview Preparation</div>
+    </div>
+  </section>
+
+  <section id="courses">
+    <h2>Our Courses</h2>
+    <div class="courses-container" id="courseContainer"></div>
+    <!-- Purchase Modal for Course Enrollment -->
+    <div class="modal" id="purchaseModal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closePurchaseModal()">&times;</span>
+        <h2 id="purchaseTitle">Enroll in Course</h2>
+        <form id="purchaseForm" onsubmit="submitPurchase(event)">
+          <input type="text" id="purchaseStudent" placeholder="Your Name" required>
+          <input type="email" id="purchaseEmail" placeholder="Your Email" required>
+          <input type="hidden" id="purchaseCourse">
+          <input type="hidden" id="purchaseLevel">
+          <button type="submit" class="enroll-btn">Confirm Enrollment</button>
+        </form>
+        <div id="purchaseSuccess" style="display:none; color:#28a745; font-weight:bold; text-align:center; margin-top:18px;">Thank you for enrolling! We will contact you soon.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-content">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="About DevOps" class="about-img">
+      <div>
+        <p>Welcome to Aravind DevOps Courses! We are passionate about empowering IT professionals and students with the latest DevOps skills. Our mission is to provide practical, hands-on training that bridges the gap between theory and real-world application. With years of industry experience, our instructors guide you through every step of your DevOps journey.</p>
+        <ul>
+          <li>Expert trainers with real-world experience</li>
+          <li>Project-based learning</li>
+          <li>Flexible online and offline sessions</li>
+          <li>Community support and mentorship</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Student Reviews</h2>
+    <div class="review-list">
+      <div class="review-card">"Great hands-on training!" - Aravind</div>
+      <div class="review-card">"Loved Docker & Kubernetes sessions!" - Priya</div>
+      <div class="review-card">"AWS automation was top-notch." - Kumar</div>
+      <div class="review-card">"The CI/CD pipeline course landed me a job!" - Sneha</div>
+      <div class="review-card">"Best DevOps mentorship in the city." - Rahul</div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Who can join these courses?</h4>
+        <p>Anyone interested in DevOps, from beginners to experienced professionals.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Are the courses online or offline?</h4>
+        <p>We offer both online and offline batches for your convenience.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you provide job assistance?</h4>
+        <p>Yes, we offer job assistance, resume preparation, and interview guidance.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there a certificate after completion?</h4>
+        <p>Yes, you will receive a certificate after successfully completing the course.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="upcoming-placements">
+    <h2>Upcoming Placements</h2>
+    <div class="upcoming-list" style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;">
+      <div class="upcoming-card" style="background:#e3f2fd;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#1976d2;margin-bottom:8px;">Wipro</h4>
+        <p style="font-size:15px;">Drive Date: 20 April 2026<br>Role: DevOps Engineer</p>
+      </div>
+      <div class="upcoming-card" style="background:#fff3e0;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#f57c00;margin-bottom:8px;">Accenture</h4>
+        <p style="font-size:15px;">Drive Date: 28 April 2026<br>Role: Cloud Automation Engineer</p>
+      </div>
+      <div class="upcoming-card" style="background:#e8f5e9;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#388e3c;margin-bottom:8px;">HCL</h4>
+        <p style="font-size:15px;">Drive Date: 5 May 2026<br>Role: Site Reliability Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="placed-students">
+    <h2>Our Placed Students</h2>
+    <div class="placed-list" style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;">
+      <div class="placed-card" style="background:#e3f2fd;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#1976d2;margin-bottom:8px;">Kural</h4>
+        <p style="font-size:15px;">Cloud Engineer<br><span style="color:#388e3c;">Infosys</span></p>
+      </div>
+      <div class="placed-card" style="background:#fff3e0;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#f57c00;margin-bottom:8px;">Aravind K</h4>
+        <p style="font-size:15px;">DevOps Lead<br><span style="color:#1976d2;">TCS</span></p>
+      </div>
+      <div class="placed-card" style="background:#e8f5e9;padding:22px 18px;border-radius:14px;width:260px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;">
+        <h4 style="color:#388e3c;margin-bottom:8px;">Anbu</h4>
+        <p style="font-size:15px;">DevOps Engineer<br><span style="color:#f57c00;">Cognizant</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+      <input type="text" id="contactName" placeholder="Your Name" required>
+      <input type="email" id="contactEmail" placeholder="Your Email" required>
+      <textarea id="contactMessage" placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<!-- Admin Modal -->
+<div class="modal" id="adminModal" style="display:none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeAdminModal()">&times;</span>
+    <h2>Admin Login</h2>
+    <div id="adminLoginArea">
+      <input type="text" id="adminUser" placeholder="Admin Username">
+      <input type="password" id="adminPass" placeholder="Admin Password">
+      <button class="enroll-btn" onclick="adminLogin()">Login as Admin</button>
+    </div>
+    <div id="adminPanel" style="display:none;max-height:85vh;overflow-y:auto;">
+      <h3>Database overview</h3>
+      <p style="font-size:13px;color:#555;margin-bottom:8px;">All site data is stored in SQLite on the server.</p>
+      <div id="adminStats" style="background:#e9ecef;padding:12px;border-radius:10px;font-size:14px;margin-bottom:12px;"></div>
+      <h3 style="margin-top:16px;">Registered Students</h3>
+      <div id="adminStudents"></div>
+      <h3 style="margin-top:20px;">Course Purchases</h3>
+      <div id="adminPurchases"></div>
+      <h3 style="margin-top:20px;">Contact messages</h3>
+      <div id="adminContactMessages" style="max-height:220px;overflow-y:auto;font-size:13px;"></div>
+      <button class="enroll-btn" style="background:#dc3545;margin-top:18px;" onclick="adminLogout()">Logout</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2>Sign In</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="regRetype" placeholder="Retype Password" style="display:none; margin-top:8px;">
+    <select id="role" style="display:none;">
+      <option value="student">Student</option>
+    </select>
+    <button id="loginBtn" onclick="login()">Login</button>
+    <button id="registerBtn" onclick="showRegisterFields()">Register</button>
+    <button id="doRegisterBtn" onclick="registerStudent()" style="display:none;">Submit Registration</button>
+    <button id="backToLoginBtn" onclick="backToLogin()" style="display:none;margin-top:8px;background:#6c757d;">Back to Login</button>
+    <div style="text-align:right;margin-top:8px;">
+      <button type="button" onclick="showForgotPassword()" style="background:none;border:none;color:#007bff;cursor:pointer;font-size:14px;">Forgot Password?</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+// Section fade-in on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('main section');
+  const reveal = () => {
+    const trigger = window.innerHeight * 0.92;
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top < trigger) sec.classList.add('visible');
+    });
+  };
+  window.addEventListener('scroll', reveal);
+  reveal();
+});
+
+// FAQ accordion
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.faq-item h4').forEach(h => {
+    h.addEventListener('click', function() {
+      const item = this.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+});
+/** API base URL (empty = same-origin, works with docker nginx proxy). */
+const API = 'http://127.0.0.1:8000';
+let courses = [];
+let cart = [];
+
+
+async function apiJson(path, options = {}) {
+  const { headers: optHeaders, ...rest } = options;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 800);
+  try {
+    const res = await fetch(API + path, {
+      credentials: 'include',
+      signal: controller.signal,
+      ...rest,
+      headers: { 'Content-Type': 'application/json', ...(optHeaders || {}) }
+    });
+    clearTimeout(timeout);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || res.statusText || 'Request failed');
+    return data;
+  } catch (e) {
+    clearTimeout(timeout);
+    throw e;
+  }
+}
+//async function loadCourses() {
+  //try {
+  //  courses = await apiJson('/api/courses');
+  //  renderCourses();
+  //} catch (e) {
+   // console.error(e);
+    //alert('Could not load courses. Run the Python server (see backend/app.py) and open http://127.0.0.1:5000');//
+    //alert('Could not load courses. Make sure Python server is running on port 8000.');//
+ // }//
+//}//
+//async function loadCourses() {
+ // try {
+    //courses = await apiJson('/api/courses');
+   // renderCourses();
+  //}// catch (e) {
+    //console.error(e);
+    // Backend illalum default courses show aagum
+   // courses = defaultCourses;
+  //  renderCourses();
+  //}/
+//}//
+
+// Default courses - backend illalum show aagum
+const defaultCourses = [
+  { name: "Docker Beginner", level: "Beginner", description: "Learn Docker basics, images, containers, and orchestration.", img: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9", price: 500 },
+  { name: "Kubernetes Advanced", level: "Advanced", description: "Production deployment, scaling, and monitoring.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa", price: 500 },
+  { name: "AWS DevOps", level: "Advanced", description: "Cloud automation, CI/CD, and infrastructure as code.", img: "https://images.unsplash.com/photo-1518770660439-4636190af475", price: 500 },
+  { name: "Linux for DevOps", level: "Beginner", description: "Linux essentials for DevOps engineers.", img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6", price: 500 },
+  { name: "CI/CD Pipeline Mastery", level: "Intermediate", description: "Jenkins, GitHub Actions, and automation pipelines.", img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca", price: 500 },
+  { name: "Terraform & IaC", level: "Intermediate", description: "Infrastructure as Code with Terraform.", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb", price: 500 }
+];
+
+async function loadCourses() {
+  try {
+    courses = await apiJson('/api/courses');
+    renderCourses();
+  } catch (e) {
+    console.error(e);
+    // Backend illalum default courses show aagum
+    courses = defaultCourses;
+    renderCourses();
+  }
+}
+
+function renderCourses(list=courses){
+  let container=document.getElementById('courseContainer');
+  container.innerHTML='';
+  list.forEach(course=>{
+    const desc = course.desc || course.description || '';
+    container.innerHTML+=`
+    <div class="course-card">
+      <img src="${course.img}" alt="${course.name}">
+      <div class="content">
+        <h3>${course.name}</h3>
+        <p>${desc}</p>
+        <p><strong>Level:</strong> ${course.level}</p>
+        <p style="font-size:17px;margin:10px 0 0 0;"><strong>Price:</strong> ₹${course.price}</p>
+        <button class="enroll-btn" onclick="addToCart('${course.name}')">Add to Cart 🛒</button>
+      </div>
+    </div>`;
+  });
+}
+// Cart logic
+function addToCart(courseName){
+  const course = courses.find(c=>c.name===courseName);
+  if(!cart.some(c=>c.name===courseName)){
+    cart.push(course);
+    updateCartIcon();
+    alert(`${courseName} added to cart!`);
+  }else{
+    alert(`${courseName} is already in your cart.`);
+  }
+}
+
+function updateCartIcon(){
+  let cartBtn = document.getElementById('cartBtn');
+  if(cartBtn){
+    cartBtn.innerHTML = `🛒 Cart (${cart.length})`;
+  }
+}
+
+function openCart(){
+  if(cart.length===0){
+    alert('Your cart is empty!');
+    return;
+  }
+  // Show modal with all courses in cart
+  let modal = document.getElementById('purchaseModal');
+  let form = document.getElementById('purchaseForm');
+  let success = document.getElementById('purchaseSuccess');
+  let title = document.getElementById('purchaseTitle');
+  let courseInput = document.getElementById('purchaseCourse');
+  let levelInput = document.getElementById('purchaseLevel');
+  let studentInput = document.getElementById('purchaseStudent');
+  let emailInput = document.getElementById('purchaseEmail');
+  modal.style.display = 'flex';
+  title.textContent = 'Enroll in Selected Courses';
+  courseInput.value = cart.map(c=>c.name).join(', ');
+  levelInput.value = cart.map(c=>c.level).join(', ');
+  studentInput.value = '';
+  emailInput.value = '';
+  success.style.display = 'none';
+  form.style.display = '';
+  // Show course list in modal
+  if(!document.getElementById('cartCourseList')){
+    let list = document.createElement('div');
+    list.id = 'cartCourseList';
+    list.style.margin = '10px 0 15px 0';
+    form.insertBefore(list, studentInput);
+  }
+  let list = document.getElementById('cartCourseList');
+  list.innerHTML = cart.map(c=>`<div style='margin-bottom:6px;'>${c.name} <span style='color:#007bff;'>(₹${c.price})</span> <button type='button' onclick="removeFromCart('${c.name}')" style='margin-left:8px;background:#dc3545;color:#fff;border:none;border-radius:5px;padding:2px 8px;cursor:pointer;'>Remove</button></div>`).join('');
+  // Show total price
+  if(!document.getElementById('cartTotal')){
+    let total = document.createElement('div');
+    total.id = 'cartTotal';
+    total.style.margin = '10px 0 15px 0';
+    total.style.fontWeight = 'bold';
+    form.insertBefore(total, studentInput);
+  }
+  let total = document.getElementById('cartTotal');
+  total.innerHTML = `Total: ₹${cart.reduce((sum,c)=>sum+c.price,0)}`;
+}
+
+function removeFromCart(courseName){
+  cart = cart.filter(c=>c.name!==courseName);
+  updateCartIcon();
+  if(document.getElementById('cartCourseList')){
+    document.getElementById('cartCourseList').innerHTML = cart.map(c=>`<div style='margin-bottom:6px;'>${c.name} <span style='color:#007bff;'>(₹${c.price})</span> <button type='button' onclick=\"removeFromCart('${c.name}')\" style='margin-left:8px;background:#dc3545;color:#fff;border:none;border-radius:5px;padding:2px 8px;cursor:pointer;'>Remove</button></div>`).join('');
+  }
+  if(document.getElementById('cartTotal')){
+    document.getElementById('cartTotal').innerHTML = `Total: ₹${cart.reduce((sum,c)=>sum+c.price,0)}`;
+  }
+}
+loadCourses();
+
+function openModal(){document.getElementById('loginModal').style.display='flex';}
+function closeModal(){document.getElementById('loginModal').style.display='none';}
+function registerModal(){alert('Registration logic here');}
+
+async function login(){
+  let user = document.getElementById('username').value.trim();
+  let pass = document.getElementById('password').value;
+  if(!user){
+    alert('Username is required.');
+    return;
+  }
+  if(pass.length < 6){
+    alert('Password must be at least 6 characters.');
+    return;
+  }
+  try {
+    await apiJson('/api/login', { method: 'POST', body: JSON.stringify({ username: user, password: pass }) });
+    showStudentName();
+    closeModal();
+  } catch (e) {
+    alert(e.message || 'Login failed.');
+  }
+}
+
+
+function showRegisterFields(){
+  document.getElementById('regRetype').style.display = '';
+  document.getElementById('doRegisterBtn').style.display = '';
+  document.getElementById('backToLoginBtn').style.display = '';
+  document.getElementById('registerBtn').style.display = 'none';
+  document.getElementById('loginBtn').style.display = 'none';
+}
+
+function backToLogin(){
+  document.getElementById('regRetype').style.display = 'none';
+  document.getElementById('doRegisterBtn').style.display = 'none';
+  document.getElementById('backToLoginBtn').style.display = 'none';
+  document.getElementById('registerBtn').style.display = '';
+  document.getElementById('loginBtn').style.display = '';
+}
+
+async function registerStudent(){
+  let user = document.getElementById('username').value.trim();
+  let pass = document.getElementById('password').value;
+  let retype = document.getElementById('regRetype').value;
+  if(!user){
+    alert('Username is required.');
+    return;
+  }
+  if(pass.length < 6){
+    alert('Password must be at least 6 characters.');
+    return;
+  }
+  if(pass !== retype){
+    alert('Passwords do not match.');
+    return;
+  }
+  try {
+    await apiJson('/api/register', { method: 'POST', body: JSON.stringify({ username: user, password: pass }) });
+    alert('Registration successful! You can now login.');
+    document.getElementById('regRetype').style.display = 'none';
+    document.getElementById('doRegisterBtn').style.display = 'none';
+    document.getElementById('registerBtn').style.display = '';
+    document.getElementById('loginBtn').style.display = '';
+  } catch (e) {
+    alert(e.message || 'Registration failed.');
+  }
+}
+
+async function showStudentName(){
+  let user = null;
+  try {
+    const s = await apiJson('/api/session');
+    if (s.logged_in && s.username) user = s.username;
+  } catch (e) {
+    user = null;
+  }
+  let header = document.querySelector('header');
+  let nameSpan = document.getElementById('studentNameSpan');
+  let exitBtn = document.getElementById('exitBtn');
+  if(user){
+    if(!nameSpan){
+      let btn = header.querySelector('.login-btn');
+      nameSpan = document.createElement('span');
+      nameSpan.id = 'studentNameSpan';
+      nameSpan.style.marginLeft = '18px';
+      nameSpan.style.fontWeight = 'bold';
+      btn.insertAdjacentElement('beforebegin', nameSpan);
+    }
+    nameSpan.textContent = '👋 Welcome, ' + user;
+    if(!exitBtn){
+      let btn = header.querySelector('.login-btn');
+      let exit = document.createElement('button');
+      exit.textContent = 'Exit';
+      exit.id = 'exitBtn';
+      exit.className = 'login-btn';
+      exit.style.background = '#6c757d';
+      exit.style.marginLeft = '10px';
+      exit.onclick = logoutStudent;
+      btn.insertAdjacentElement('afterend', exit);
+    }
+  }else{
+    if(nameSpan) nameSpan.remove();
+    if(exitBtn) exitBtn.remove();
+  }
+}
+
+async function logoutStudent(){
+  try {
+    await apiJson('/api/logout', { method: 'POST', body: '{}' });
+  } catch (e) { /* ignore */ }
+  showStudentName();
+}
+
+function showForgotPassword(){
+  alert('Contact support to reset your password.');
+}
+
+window.onload = function(){
+  showStudentName();
+  updateCartIcon();
+}
+
+function buyCourse(courseName, courseLevel){
+  document.getElementById('purchaseModal').style.display = 'flex';
+  document.getElementById('purchaseTitle').textContent = `Enroll in: ${courseName} (${courseLevel})`;
+  document.getElementById('purchaseCourse').value = courseName;
+  document.getElementById('purchaseLevel').value = courseLevel;
+  document.getElementById('purchaseStudent').value = '';
+  document.getElementById('purchaseEmail').value = '';
+  document.getElementById('purchaseSuccess').style.display = 'none';
+  document.getElementById('purchaseForm').style.display = '';
+}
+
+function closePurchaseModal(){
+  document.getElementById('purchaseModal').style.display = 'none';
+}
+
+async function submitPurchase(e){
+  e.preventDefault();
+  let student = document.getElementById('purchaseStudent').value.trim();
+  let email = document.getElementById('purchaseEmail').value.trim();
+  let course = document.getElementById('purchaseCourse').value;
+  let level = document.getElementById('purchaseLevel').value;
+  let total = 0;
+  if(course && course.includes(', ')) {
+    let courseArr = course.split(', ');
+    let courseObjs = courseArr.map(name => courses.find(c=>c.name===name));
+    total = courseObjs.reduce((sum,c)=>sum+(c?c.price:0),0);
+  } else {
+    let courseObj = courses.find(c=>c.name===course);
+    total = courseObj ? courseObj.price : 0;
+  }
+  try {
+    await apiJson('/api/purchases', {
+      method: 'POST',
+      body: JSON.stringify({ student, email, course, level, total })
+    });
+    document.getElementById('purchaseForm').style.display = 'none';
+    document.getElementById('purchaseSuccess').style.display = '';
+    cart = [];
+    updateCartIcon();
+  } catch (err) {
+    alert(err.message || 'Could not save enrollment.');
+  }
+}
+
+// Admin logic
+function openAdminModal(){
+  document.getElementById('adminModal').style.display = 'flex';
+  document.getElementById('adminLoginArea').style.display = '';
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('adminUser').value = '';
+  document.getElementById('adminPass').value = '';
+}
+function closeAdminModal(){
+  document.getElementById('adminModal').style.display = 'none';
+}
+async function adminLogin(){
+  let user = document.getElementById('adminUser').value.trim();
+  let pass = document.getElementById('adminPass').value;
+  try {
+    await apiJson('/api/admin/login', { method: 'POST', body: JSON.stringify({ username: user, password: pass }) });
+    document.getElementById('adminLoginArea').style.display = 'none';
+    document.getElementById('adminPanel').style.display = '';
+    await renderAdminPanel();
+  } catch (e) {
+    alert(e.message || 'Invalid admin credentials!');
+  }
+}
+async function adminLogout(){
+  try {
+    await apiJson('/api/admin/logout', { method: 'POST', body: '{}' });
+  } catch (e) { /* ignore */ }
+  document.getElementById('adminLoginArea').style.display = '';
+  document.getElementById('adminPanel').style.display = 'none';
+}
+async function renderAdminPanel(){
+  try {
+    const [stats, stu, pur, msgs] = await Promise.all([
+      apiJson('/api/admin/stats'),
+      apiJson('/api/admin/students'),
+      apiJson('/api/admin/purchases'),
+      apiJson('/api/admin/contact-messages')
+    ]);
+    const t = stats.tables || {};
+    document.getElementById('adminStats').innerHTML =
+      `<strong>${escapeHtml(stats.engine || 'SQLite')}</strong> — file: <code style="font-size:12px;">${escapeHtml(stats.database_file || '')}</code><br>` +
+      `Users: <b>${t.users ?? 0}</b> · Purchases: <b>${t.purchases ?? 0}</b> · Courses: <b>${t.courses ?? 0}</b> · Contact msgs: <b>${t.contact_messages ?? 0}</b>`;
+    let studentList = (stu.students || []).map(u => `<div><b>${escapeHtml(u)}</b></div>`).join('');
+    document.getElementById('adminStudents').innerHTML = studentList || '<i>No students registered.</i>';
+    let purchaseList = (pur.purchases || []).map(p =>
+      `<div style='margin-bottom:10px;'><b>${escapeHtml(p.student)}</b> (${escapeHtml(p.email)})<br>Courses: ${escapeHtml(p.course)}<br>Level: ${escapeHtml(p.level)}<br>Total: ₹${Number(p.total)}<br>Date: ${escapeHtml(p.date)}</div>`
+    ).join('');
+    document.getElementById('adminPurchases').innerHTML = purchaseList || '<i>No purchases yet.</i>';
+    let cm = (msgs.messages || []).map(m =>
+      `<div style='margin-bottom:12px;border-bottom:1px solid #dee2e6;padding-bottom:8px;'><b>${escapeHtml(m.name)}</b> &lt;${escapeHtml(m.email)}&gt;<br><span style='color:#555;'>${escapeHtml(m.message)}</span><br><small style='color:#888;'>${escapeHtml(m.created_at)}</small></div>`
+    ).join('');
+    document.getElementById('adminContactMessages').innerHTML = cm || '<i>No contact messages yet.</i>';
+  } catch (e) {
+    document.getElementById('adminStats').innerHTML = '<i>Could not load.</i>';
+    document.getElementById('adminStudents').innerHTML = '<i>Could not load.</i>';
+    document.getElementById('adminPurchases').innerHTML = '<i>Could not load.</i>';
+    document.getElementById('adminContactMessages').innerHTML = '<i>Could not load.</i>';
+    alert(e.message || 'Admin data failed to load.');
+  }
+}
+function escapeHtml(s) {
+  if (s == null) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+async function submitContact(e) {
+  e.preventDefault();
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+  try {
+    await apiJson('/api/contact', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, message })
+    });
+    alert('Thank you! We will get back to you soon.');
+    document.getElementById('contactForm').reset();
+  } catch (err) {
+    alert(err.message || 'Could not send message.');
+  }
+}
+
+</script>
+
+
+<style>
+.enroll-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.enroll-btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+nav a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #dc3545;
+}
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  margin: 30px 0;
+}
+.about-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.about-content ul {
+  margin-top: 18px;
+  padding-left: 20px;
+}
+.about-content li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.faq-item {
+  background: #f1f3f5;
+  padding: 22px 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.faq-item h4 {
+  margin-bottom: 8px;
+  color: #007bff;
+  font-size: 18px;
+}
+.faq-item p {
+  color: #333;
+  font-size: 15px;
+}
+@media(max-width: 900px) {
+  .about-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .about-img {
+    width: 100%;
+    height: 180px;
+  }
+}
+</style>
+
+<footer style="width:100%;background:linear-gradient(90deg,#232526 0%,#414345 100%);color:#fff;padding:18px 0;text-align:center;position:relative;bottom:0;left:0;font-size:15px;box-shadow:0 -2px 8px rgba(0,0,0,0.08);margin-top:40px;letter-spacing:0.5px;">
+  <span style="color:#ff0000ff;font-weight:bold;">© 2026 Copyright by Aravind</span>
+</footer>
+</body>
+</html>
+ 
