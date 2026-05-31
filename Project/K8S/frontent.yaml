@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: aravindrio7/frontendcourseimage:f4
+        image: aravindrio7/frontendcourseimage:V5
         imagePullPolicy: Always
 
         ports:
